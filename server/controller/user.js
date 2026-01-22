@@ -29,7 +29,7 @@ const Register = async (req, res) => {
       password: hashedPassword,
       otp,
       otpExpiration: new Date(Date.now() + 5 * 60 * 1000),
-      image: image,
+      image: image,g
     });
 
     await newUser.save();
