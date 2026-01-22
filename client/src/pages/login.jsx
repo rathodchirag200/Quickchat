@@ -11,6 +11,7 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setToken } = useChat();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,7 +20,7 @@ export const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/api/login", form);
+      const res = await axios.post(`${API_URL}api/login`, form);
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       toast.success("Login successful");
@@ -36,7 +37,7 @@ export const Login = () => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      const res = await axios.post("http://localhost:3000/api/google-login", {
+      const res = await axios.post(`${API_URL}api/google-login`, {
         email: user.email,
         username: user.displayName,
         image: user.photoURL,

@@ -7,10 +7,11 @@ export const Profile = () => {
   const [user, setUser] = useState(null);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/getme", {
+      .get(`${API_URL}api/getme`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setUser(res.data.data))
@@ -44,7 +45,7 @@ export const Profile = () => {
             src={
               user.image?.startsWith("http")
                 ? user.image
-                : `http://localhost:3000/${user.image}`
+                : `${API_URL}${user.image}`
             }
             className="w-36 h-36 rounded-full object-cover"
             alt="profile"

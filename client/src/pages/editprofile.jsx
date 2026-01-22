@@ -11,13 +11,14 @@ export const EditProfile = () => {
   const [about, setabout] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+      const API_URL = import.meta.env.VITE_API_URL;
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/getme", {
+      .get(`${API_URL}api/getme`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -47,7 +48,7 @@ export const EditProfile = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.post("http://localhost:3000/api/edit", formData, {
+      await axios.post(`${API_URL}api/edit`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -96,7 +97,7 @@ export const EditProfile = () => {
                   ? preview
                   : user.image?.startsWith("http")
                   ? user.image
-                  : `http://localhost:3000/${user.image}`
+                  : `${API_URL}${user.image}`
               }
               className="w-36 h-36 rounded-full object-cover"
               alt="profile"

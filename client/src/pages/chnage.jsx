@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 export const ChangePassword = () => {
   const navigate = useNavigate();
+      const API_URL = import.meta.env.VITE_API_URL;
 
   const validationSchema = Yup.object({
     oldpassword: Yup.string().required("Old password is required"),
@@ -29,7 +30,7 @@ export const ChangePassword = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.post("http://localhost:3000/api/changepassword", values, {
+      await axios.post(`${API_URL}api/changepassword`, values, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -18,15 +18,16 @@ export const ChatProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [selecteduser, setselecteduser] = useState(null);
+      const API_URL = import.meta.env.VITE_API_URL;
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();     
 
   const realtimeDB = getDatabase(app);
 
   useEffect(() => {
     const getMe = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/getme", {
+        const res = await axios.get(`${API_URL}api/getme`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

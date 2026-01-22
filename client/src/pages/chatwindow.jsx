@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 
 export const Chatwindow = () => {
   const { selecteduser, closeChat } = useChat();
+      const API_URL = import.meta.env.VITE_API_URL;
 
   const [previewFile, setPreviewFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -105,7 +106,7 @@ export const Chatwindow = () => {
               src={
                 selecteduser.image?.startsWith("http")
                   ? selecteduser.image
-                  : `http://localhost:3000/${selecteduser.image}`
+                  : `${API_URL}${selecteduser.image}`
               }
               className="w-10 h-10 rounded-full object-cover"
             />

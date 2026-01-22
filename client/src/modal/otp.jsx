@@ -8,13 +8,14 @@ export const Otpmodal = ({ email, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [resendLoading, setResendLoading] = useState(false);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:3000/api/verify", {
+      await axios.post(`${API_URL}api/verify`, {
         email,
         otp,
       });
@@ -33,7 +34,7 @@ export const Otpmodal = ({ email, onClose }) => {
     setResendLoading(true);
 
     try {
-      await axios.post("http://localhost:3000/api/resend", { email });
+      await axios.post(`${API_URL}api/resend`, { email });
       toast.success("OTP resent successfully");
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to resend OTP");

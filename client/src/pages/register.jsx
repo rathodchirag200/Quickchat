@@ -11,6 +11,7 @@ import { useChat } from "../context/ChatContext";
 export const Register = () => {
   const navigate = useNavigate();
   const { setToken } = useChat();
+      const API_URL = import.meta.env.VITE_API_URL;
 
   const [form, setForm] = useState({
     username: "",
@@ -47,7 +48,7 @@ export const Register = () => {
       formData.append("image", form.image);
 
       const res = await axios.post(
-        "http://localhost:3000/api/register",
+        `${API_URL}api/register`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -71,7 +72,7 @@ export const Register = () => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      const res = await axios.post("http://localhost:3000/api/google-login", {
+      const res = await axios.post(`${API_URL}api/google-login`, {
         email: user.email,
         username: user.displayName,
         image: user.photoURL,

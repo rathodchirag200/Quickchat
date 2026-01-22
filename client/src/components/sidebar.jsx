@@ -14,13 +14,14 @@ export const Sidebar = () => {
   const [search, setSearch] = useState("");
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [chats, setChats] = useState({});
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
 
   const fetchUsers = async (me) => {
     try {
       setLoadingUsers(true);
-      const res = await axios.get("http://localhost:3000/api/users");
+      const res = await axios.get(`${API_URL}api/users`);
       const filtered = res.data.data.filter((u) => u._id !== me._id);
       setUsers(filtered);
     } catch (err) {
@@ -141,7 +142,7 @@ export const Sidebar = () => {
                     src={
                       user.image?.startsWith("http")
                         ? user.image
-                        : `http://localhost:3000/${user.image}`
+                        : `${API_URL}${user.image}`
                     }
                     className="w-12 h-12 rounded-full object-cover"
                     referrerPolicy="no-referrer"
@@ -194,7 +195,7 @@ export const Sidebar = () => {
               src={
                 currentUser.image?.startsWith("http")
                   ? currentUser.image
-                  : `http://localhost:3000/${currentUser.image}`
+                  : `${API_URL}${currentUser.image}`
               }
               alt="profile"
               className="w-9 h-9 rounded-full object-cover"
