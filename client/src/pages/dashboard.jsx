@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Sidebar } from "../components/sidebar";
 import { Chatwindow } from "./chatwindow";
-import { useChat } from "../context/ChatContext";
+import { useChat } from "../context/Chatcontext";
 import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
