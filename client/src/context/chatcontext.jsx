@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doc, updateDoc } from "firebase/firestore";
-import { db, app } from "../config/firebase";
+import { db , app } from "../config/firebase";
 import {
   getDatabase,
   ref,
@@ -85,7 +85,7 @@ export const ChatProvider = ({ children }) => {
         unreadCount: 0,
       });
     } catch (error) {
-      console.error("Failed to reset unread count", error);
+      console.error("Failed to reset your unread count", error);
     }
   };
 
