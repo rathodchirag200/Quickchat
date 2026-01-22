@@ -6,7 +6,7 @@ import { Otpmodal } from "../modal/otp";
 
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
-import { useChat } from "../context/Chatcontext";
+import { useChat } from "../context/chatcontext";
 
 export const Register = () => {
   const navigate = useNavigate();

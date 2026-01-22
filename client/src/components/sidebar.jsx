@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch, FiLogOut, FiMoreVertical } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useChat } from "../context/Chatcontext";
+import { useChat } from "../context/chatcontext";
 
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";

@@ -9,7 +9,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { useChat } from "../context/Chatcontext";
+import { useChat } from "../context/chatcontext";
 
 const formatTime = (timestamp) =>
   timestamp

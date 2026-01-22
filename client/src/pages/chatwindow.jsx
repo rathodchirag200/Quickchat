@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiPhone, FiVideo, FiMoreVertical, FiArrowLeft } from "react-icons/fi";
 import { ImagePreview } from "./ImagePreview";
-import { useChat } from "../context/Chatcontext";
+import { useChat } from "../context/chatcontext";
 import { Index } from ".";
 import { SendMessage } from "./SendMessage";
 import { Messages } from "./Messages";
