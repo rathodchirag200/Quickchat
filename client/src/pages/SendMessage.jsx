@@ -8,7 +8,7 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { useChat } from "../context/ChatContext";
+import { useChat } from "../context/Chatcontext";
 
 export const SendMessage = ({ onImageSelect }) => {
   const [text, setText] = useState("");

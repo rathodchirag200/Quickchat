@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch, FiLogOut, FiMoreVertical } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useChat } from "../context/ChatContext";
+import { useChat } from "../context/Chatcontext";
 
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 export const Sidebar = () => {
   const { currentUser, openChat, handleLogout, selecteduser } = useChat();
+      const API_URL = import.meta.env.VITE_API_URL;
 
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [chats, setChats] = useState({});
-  const API_URL = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
 
